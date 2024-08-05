@@ -3,19 +3,28 @@ package com.yupi.springbootinit.bizmq;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.yupi.springbootinit.config.RabbitConfig;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 /**
  * @description：用于测试，在程序执行前执行一次
  * @author： songgt
  * @create： 2024/7/29 下午10:24
  */
+@Component
 public class BiInitMain {
 
-    public static void main(String[] args) {
+    @Resource
+    private RabbitConfig rabbitConfig;
+
+    @PostConstruct
+    public void init() {
         try {
-            ConnectionFactory factory = new ConnectionFactory();
-            factory.setHost("localhost");
-            Connection connection = factory.newConnection();
+            ConnectionFactory connectionFactory = rabbitConfig.connectionFactory();
+            Connection connection = connectionFactory.newConnection();
             Channel channel = connection.createChannel();
 
             String EXCHANGE_NAME = BiMqConstant.BI_EXCHANGE_NAME;

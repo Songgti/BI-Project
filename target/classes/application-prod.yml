@@ -2,15 +2,15 @@
 # @author <a href="https://github.com/liyupi">程序员鱼皮</a>
 # @from <a href="https://yupi.icu">编程导航知识星球</a>
 server:
-  port: 8101
+  port: 8080
 spring:
   # 数据库配置
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/my_db
-    username: root
-    password: 123456
+    url: jdbc:mysql://localhost:3306/songgt_bi
+    username: songgt
+    password: 2592009475
   # Redis 配置
   # todo 需替换配置
   redis:
@@ -25,6 +25,12 @@ spring:
     uris: http://localhost:9200
     username: root
     password: 123456
+  #RabbitMQ 配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    password: guest
+    username: guest
 mybatis-plus:
   configuration:
     # 生产环境关闭日志
@@ -35,3 +41,8 @@ knife4j:
     enable: true
     username: root
     password: 123456
+# yucongming
+yuapi:
+  client:
+    access-key: staioeqfwp6c0biksd2s9f4csfeqxhvr
+    secret-key: bk579mlajbdyqcjk64ye91a9vf5cgkhs
